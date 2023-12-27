@@ -1,8 +1,13 @@
+using CodeWithMe.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<ApplicationContext>(c => c.UseSqlServer(builder.Configuration.GetConnectionString("default")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

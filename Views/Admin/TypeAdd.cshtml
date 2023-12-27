@@ -1,0 +1,43 @@
+﻿@model List<Languages>
+
+<div class="h-100 ">
+
+    <div class="row h-100 ml-0 type">
+        <partial name="_AdminLayout.cshtml" />
+        <div class="col d-flex flex-column flex-wrap align-content-center py-5">
+            <div class="d-flex justify-content-center"><h1>Add Type</h1></div>
+            <div class="d-flex flex-column p-3 w-75">
+                <form method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="mb-3">
+                        <label for="langname" class="form-label">Language Name</label>
+                        <select id="select" name="LanguagesId" class="form-select" aria-label="Default select example" data-placeholder="Select Languages" multiple>
+                        @foreach(var i in Model){
+                            <option value="@i.Id">@i.Name</option>
+                        }
+                    
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="langname" class="form-label">Type Name</label>
+                        <input type="text" name="Name" class="form-control " placeholder="Enter Type Name" id="typename" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="langdesc" name="Description" class="form-label">Type Description</label>
+                        <input name="Description" class="form-control " placeholder="Enter Description" id="langdesc" aria-describedby="emailHelp" >
+                    </div>
+                    <div class="mb-3">
+                        <input type="file" name="attachment" class="form-control " id='file' placeholder="Enter Langauge Name" aria-describedby="emailHelp" style="display:none" onchange="showme(this)" >
+                        <button class="btn btn-warning check" onclick="upload(event)">Upload</button>
+                        <img src="~/noimage.png" id="img" class="image-up ml-4" />
+                    </div>
+                    <button type="submit" class="btn btn-primary check">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
