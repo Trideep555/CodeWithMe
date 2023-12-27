@@ -15,7 +15,6 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>No. of Types</th>
-                        <th>No. of Programs</th>
                         <th>Actions</th>
                      </tr>
                 </thead>
@@ -25,7 +24,6 @@
                         <td>@i.Name</td>
                         <td>@i.Description.Substring(0,Math.Min(100,i.Description.Length))</td>
                         <td>@ViewBag.no_of_types[x++]</td>
-                        <td>0</td>
                             <td><a href="/Admin/Language/Edit/@i.Id" class="btn btn-info mb-2 check">Edit</a><br /><a  href="/Admin/Language/Delete/@i.Id" class="btn btn-danger check ">Delete</a></td>
                         
                     </tr>

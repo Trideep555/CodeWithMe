@@ -12,7 +12,6 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>No. of Languages</th>
-                        <th>No. of Programs</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -22,7 +21,6 @@
                             <td>@i[0]</td>
                             <td>@i[1].ToString().Substring(0, Math.Min(100, i[1].ToString().Length))</td>
                             <td>@i[2]</td>
-                            <td>0</td>
                             <td><a href="/Admin/Type/Edit/@i[0]" class="btn btn-info mb-2 check">Edit</a><br /><a href="/Admin/Type/Delete/@i[0]" class="btn btn-danger check ">Delete</a></td>
                             
                     </tr>

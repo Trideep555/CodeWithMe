@@ -64,7 +64,8 @@ body {
         background-image: -webkit-linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.4) 50%, transparent, transparent)
     }
     .adminside{
-        height:90vh;
+        height:100vh;
+        margin-top: 2%;
     }
     #editor,#editor2{
         width: 100%;

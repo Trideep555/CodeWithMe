@@ -27,11 +27,13 @@ namespace CodeWithMe.Controllers
         {
             List<Languages> lang = _db.Languages.ToList();
             List<int> no_of_types = new List<int>();
+            List<int> no_of_prog = new List<int>();
             foreach (var i in lang)
             {
                 no_of_types.Add(_db.Types.Where(e => e.LangaugeId == i.Id).Count());
             }
             ViewBag.no_of_types = no_of_types;
+           
             return View(lang);
         }
         public IActionResult Prog()
