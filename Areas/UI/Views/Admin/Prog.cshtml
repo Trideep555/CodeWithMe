@@ -1,0 +1,40 @@
+﻿@model List<CodeWithMe.Models.Program>
+@{
+    var x = 0;
+}
+<div class="h-100 ">
+
+    <div class="row h-100 ml-0 type">
+        <partial name="_AdminLayout" />
+        <div class="col d-flex flex-column justify-content-center align-content-center py-5">
+            <div class="d-flex justify-content-center"><a class="text-white text-decoration-none btn btn-primary " asp-area="UI" asp-controller="Admin" asp-action="ProgAdd">Add Programs</a></div>
+            <table id="example" class="table table-striped p-3" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Language</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var i in Model){
+                    <tr>
+                        <td>@i.Name</td>
+                        <td>@i.Description.Substring(0,Math.Min(i.Description.Length,100))</td>
+                        <td>@ViewBag.l[x]</td>
+                         <td>@ViewBag.t[x++]</td>
+                            <td><a href="/Admin/Prog/Edit/@i.Id" class="btn btn-info mb-2 check">Edit</a><br /><a href="/Admin/Prog/Delete/@i.Id" class="btn btn-danger check ">Delete</a></td>
+
+                    </tr>
+                    }
+                    
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿@model List<CodeWithMe.Models.Types>
+<div class="d-flex justify-content-center"><h2>@ViewBag.Type</h2></div>
+<div class="d-flex container flex-wrap  gap-4 mt-2">
+    @foreach(var i in Model){
+        <div class="card" style="width: 18rem;">
+            @if (String.IsNullOrEmpty(@i.File)) {
+                <img src="/noimage.png" class="card-img-top" alt="...">
+            }
+            else
+            {
+                <img src="/images/@i.File" class="card-img-top" alt="...">
+            }
+            <div class="card-body">
+            <h5 class="card-title">@i.Name</h5>
+            <p class="card-text">@i.Description</p>
+            <a href="/Type/@ViewBag.Type/@i.Id" class="btn btn-primary">Checkout Programs</a>
+        </div>
+    </div>
+    }
+    </div>

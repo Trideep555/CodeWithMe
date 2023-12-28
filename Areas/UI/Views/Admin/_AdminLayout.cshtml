@@ -1,0 +1,13 @@
+﻿<div class="col-3  adminside   shadow p-3  bg-light rounded text-dark p-4">
+    <ul class="nav mynav list-unstyled flex-column p-3 d-flex text-dark w-100 ">
+        <li class="pb-2"><a class="text-black text-decoration-none" asp-area="UI" asp-controller="Admin" asp-action="Languages">Languages</a></li>
+        <li class="pb-2"><a class="text-black text-decoration-none" asp-area="UI" asp-controller="Admin" asp-action="Type">Type</a></li>
+        <li class="pb-2"><a class="text-black text-decoration-none" asp-area="UI" asp-controller="Admin" asp-action="Prog">Programs</a></li>
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+        
+        <li class="pb-2">
+            <button type="submit" class="nav-link btn btn-link text-dark">Click here to Logout</button>
+        </li>
+        </form>
+    </ul>
+</div>

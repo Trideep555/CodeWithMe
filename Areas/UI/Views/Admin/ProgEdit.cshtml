@@ -1,0 +1,89 @@
+﻿@model CodeWithMe.Models.Program
+
+<div class="h-100 ">
+
+    <div class="row h-100 ml-0 type">
+        <partial name="_AdminLayout" />
+        <div class="col d-flex  flex-column flex-wrap align-content-center py-5">
+            <div class="d-flex justify-content-center"><h1>Add Program</h1></div>
+            <div class="d-flex flex-column p-3 w-75">
+                <form method="post" class="editor-form">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <input type="hidden" name="Code" id="Code" />
+                    <input type="hidden" name="LanguageId" id="LanguageId" />
+
+                    <div class="mb-3">
+                        <label for="langname" class="form-label">Language Name</label>
+                        <select class="form-select" id="lang" onchange="changeit(this)" aria-label="Default select example">
+                            <option value="">Select a Language</option>
+
+                            @foreach (var i in ViewBag.l)
+                            {
+                                if (i.Id == Model.LanguageId)
+                                {
+                                    <option value="@i.Name:@i.Id" selected>@i.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@i.Name:@i.Id">@i.Name</option>
+
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="LanguageId" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="typename" class="form-label">Type Name</label>
+                        <select class="form-select" aria-label="Default select example" name="TypeId" id="type">
+                            <option value="">Select a Type</option>
+                            @foreach (var i in ViewBag.t)
+                            {
+                                if(i.Id == Model.TypeId)
+                                {
+                                    <option value="@i.Id" data-id="@i.LangaugeId" selected>@i.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@i.Id" data-id="@i.LangaugeId">@i.Name</option>
+
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="TypeId" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="langname" class="form-label">Program Name</label>
+                        <input type="text" name="Name" class="form-control " placeholder="Enter Program Name" id="typename" aria-describedby="emailHelp" value="@Model.Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="langdesc" name="Description" class="form-label">Program Description</label>
+                        <input name="Description" class="form-control " placeholder="Enter Description" id="langdesc" aria-describedby="emailHelp" value="@Model.Description">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="langname" class="form-label">Program</label>
+                        <div id="editor">@Model.Code</div>
+                        <span asp-validation-for="Code" class="text-danger"></span>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary check editor-check">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        window.onload = ()=>{
+            changeit(document.getElementById('lang'));
+        }
+    </script>
+}
