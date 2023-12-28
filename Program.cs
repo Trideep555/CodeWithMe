@@ -10,10 +10,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationContext>(c => c.UseSqlServer(builder.Configuration.GetConnectionString("default")));
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
-builder.Services.ConfigureApplicationCookie(options => {
-    options.LoginPath = $"/Identity/Account/Login";
-    options.LogoutPath = $"/Identity/Account/Logout";
-    options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    // httponly cookie
+    options.Cookie.HttpOnly = true;
+    options.Cookie.Name = "application.Identity";
+    options.LoginPath = "/Login";// earlier it was options.LoginPath = "/Identity/Account/Login";
+    options.AccessDeniedPath = "/Error/Index/403";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+    options.SlidingExpiration = true;
 });
 builder.Services.AddRazorPages();
 builder.Services.ConfigureApplicationCookie(options =>

@@ -8,9 +8,9 @@ namespace CodeWithMe.Controllers
     [Area("UI")]
     public class HomeController : Controller
     {
+
        
-        
-       
+
 
         public IActionResult Index()
         {
